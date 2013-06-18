@@ -1,0 +1,25 @@
+NAME
+    Mojolicious::Plugin::BBS - Mojolicious Plugin
+
+SYNOPSIS
+      # Mojolicious
+      $self->plugin('BBS');
+
+      # Mojolicious::Lite
+      plugin 'BBS';
+
+DESCRIPTION
+    Mojolicious::Plugin::BBS is a Mojolicious plugin.
+
+METHODS
+    Mojolicious::Plugin::BBS inherits all methods from Mojolicious::Plugin
+    and implements the following new ones.
+
+  register
+      $plugin->register(Mojolicious->new);
+
+    Register plugin in Mojolicious application.
+
+SEE ALSO
+    Mojolicious, Mojolicious::Guides, http://mojolicio.us.
+
