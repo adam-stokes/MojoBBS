@@ -1,10 +1,33 @@
 package Mojolicious::Plugin::BBS;
+
+use strictures 1;
 use Mojo::Base 'Mojolicious::Plugin';
+use File::Basename 'dirname';
+use File::Spec::Functions 'catdir';
+
 
 # VERSION
 
+my %defaults = (
+
+    # Mongo collection
+    collection => 'mojobbs'
+);
+
 sub register {
-  my ($self, $app) = @_;
+    my ($self, $app) = @_;
+    my (%conf) = (%defaults, %{$_[2] || {}});
+
+    my $base = catdir(dirname(__FILE__), 'BBSAssets');
+    push @{$app->renderer->paths}, catdir($base, 'templates');
+    push @{$app->static->paths},   catdir($base, 'public');
+
+    push @{$app->renderer->classes}, __PACKAGE__;
+    push @{$app->static->classes},   __PACKAGE__;
+
+    $app->helper(bbsconf => sub { \%conf });
+    return;
+
 }
 
 1;
