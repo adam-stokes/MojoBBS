@@ -11,7 +11,7 @@ use File::Spec::Functions 'catdir';
 my %defaults = (
 
     # Mongo collection
-    collection => 'mojobbs'
+    collection => 'mojobbs',
 );
 
 sub register {
